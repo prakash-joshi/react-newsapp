@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-
-export class News extends Component {
-    article = [
+{
+    "status": "ok",
+    "totalResults": 20,
+    "articles": [
         {
             "source": {
                 "id": "al-jazeera-english",
@@ -28,6 +27,19 @@ export class News extends Component {
             "urlToImage": "https://images.moneycontrol.com/static-mcnews/2019/05/D6_UpPlUcAA28Fy.jpg-large-653x435.jpeg",
             "publishedAt": "2023-01-30T12:16:50+00:00",
             "content": "Manu Kumar Jain on January 30 announced his exit from the Xiaomi group, after being it associated with it for over nine years. In a statement shared on social media, Jain said he would be \"taking som… [+2328 chars]"
+        },
+        {
+            "source": {
+                "id": "bloomberg",
+                "name": "Bloomberg"
+            },
+            "author": null,
+            "title": "India Stock Market: Most Adani Shares Drop as Rebuttal Draws Hindenburg Response",
+            "description": "",
+            "url": "https://news.google.com/__i/rss/rd/articles/CBMib2h0dHBzOi8vd3d3LmJsb29tYmVyZy5jb20vbmV3cy9hcnRpY2xlcy8yMDIzLTAxLTMwL21vc3QtYWRhbmktc3RvY2tzLWRyb3AtYXMtcmVidXR0YWwtZHJhd3MtaGluZGVuYnVyZy1yZXNwb25zZdIBAA?oc=5",
+            "urlToImage": null,
+            "publishedAt": "2023-01-30T11:04:38+00:00",
+            "content": ""
         },
         {
             "source": {
@@ -251,28 +263,4 @@ export class News extends Component {
             "content": "R Ashwin has said that he is \"fighting my own benchmarks\" because his Test performances overseas are being measured against his heroics in India. Despite being the country's best long-form spinner in… [+3347 chars]"
         }
     ]
-
-
-    constructor() {
-        super();
-        this.state = {
-            article: this.article,
-            loading: false
-        }
-    }
-    render() {
-        return (
-            <div className='container my-4'>
-                <div className="row">
-                    {this.state.article.map((element) => {
-                        return <div className="col-md-4" key={element.url}>
-                            <NewsItem title={element.title.slice(0,30)} description={element.description.slice(0,100)} imageUrl={element.urlToImage} newsUrl={element.url} />
-                        </div>
-                    })}
-                </div>
-            </div>
-        )
-    }
 }
-
-export default News
