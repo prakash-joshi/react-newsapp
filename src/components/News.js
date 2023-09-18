@@ -10,12 +10,12 @@ export class News extends Component {
             loading: false,
             page: 1,
             pageSize: 20,
-            newsFilter: "cognizant"
+            newsFilter: "world"
         }
     }
 
     async componentDidMount() {
-        let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=1&pagesize=${this.state.pageSize}`;
+        let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=1&pagesize=${this.state.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
         console.log(parsedData);
@@ -26,7 +26,7 @@ export class News extends Component {
     }
     handlePreviousClick = async () => {
         console.log("P")
-        let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=${this.state.page - 1}&pagesize=${this.state.pageSize}`;
+        let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=${this.state.page - 1}&pagesize=${this.state.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
         console.log(parsedData);
@@ -39,10 +39,10 @@ export class News extends Component {
     handleNextClick = async () => {
         console.log("N");
         if (this.state.page + 1 > Math.ceil(this.state.totalResults / this.state.pageSize)) {
-console.log("Nothing ahead")
+            console.log("Nothing ahead")
         }
         else {
-            let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=${this.state.page + 1}&pagesize=${this.state.pageSize}`;
+            let url = `https://newsapi.org/v2/everything?q=${this.state.newsFilter}&apiKey=9e67a0dabc8c4ac09852b02120f3bc47&page=${this.state.page + 1}&pagesize=${this.state.pageSize}`;
             let data = await fetch(url);
             let parsedData = await data.json();
             console.log(parsedData);
@@ -66,7 +66,7 @@ console.log("Nothing ahead")
                     </div>
                 </div>
                 <div className="container d-flex justify-content-between">
-                    <button disabled={this.state.page == 1} type="button" className="btn btn-dark" onClick={this.handlePreviousClick}>&larr; Previous</button>
+                    <button disabled={this.state.page === 1} type="button" className="btn btn-dark" onClick={this.handlePreviousClick}>&larr; Previous</button>
                     <button type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
                 </div>
             </div>
